@@ -16,13 +16,12 @@
     {% for mode in include.modes %}
     <tr>
       <td>
-        {% if mode.type %}
-        <code>{{ mode.type }}</code>
-        {% else %}
-        <code>{{ mode.mode }}</code>
-        {% endif %}
-        <br/>
-        {{ mode.name }}
+        {% assign code = mode.type if mode.type else mode.mode %}
+        <a name="{{ code }}">
+          <code>{{ code }}</code>
+          <br/>
+          {{ mode.name }}
+        </a>
       </td>
       <td>{{ mode.description | markdownify }}</td>
     </tr>
